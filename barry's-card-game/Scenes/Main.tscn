@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bin7lju1t0mdr"]
+
+[ext_resource type="Script" uid="uid://dvha3cqt5hqnl" path="res://Scripts/CardManager.gd" id="1_v1gob"]
+[ext_resource type="PackedScene" uid="uid://drnd7lrp1udku" path="res://Scenes/CardSlot.tscn" id="2_jw32o"]
+[ext_resource type="Script" uid="uid://dqw262i8s5fve" path="res://Scripts/PlayerHand.gd" id="3_50glp"]
+[ext_resource type="Script" uid="uid://bvgnpb063b1nj" path="res://Scripts/Deck.gd" id="4_vy5pj"]
+[ext_resource type="Texture2D" uid="uid://cfr3iu4mw7gd5" path="res://Assets/Deck.png" id="5_bmxlf"]
+[ext_resource type="Script" uid="uid://tf0mcat80bwu" path="res://Scripts/InputManager.gd" id="6_4kpch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_237ro"]
+size = Vector2(100, 140)
+
+[node name="Main" type="Node2D" unique_id=1547580867]
+metadata/_edit_horizontal_guides_ = [488.0, 234.0]
+
+[node name="CardManager" type="Node2D" parent="." unique_id=125900357]
+script = ExtResource("1_v1gob")
+
+[node name="CardSlot2" parent="." unique_id=485925481 instance=ExtResource("2_jw32o")]
+position = Vector2(646, 210)
+
+[node name="CardSlot" parent="." unique_id=593205861 instance=ExtResource("2_jw32o")]
+position = Vector2(479, 210)
+
+[node name="PlayerHand" type="Node2D" parent="." unique_id=1234395295]
+script = ExtResource("3_50glp")
+
+[node name="Deck" type="Node2D" parent="." unique_id=553657568]
+position = Vector2(150, 500)
+script = ExtResource("4_vy5pj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck" unique_id=614893476]
+z_index = -3
+texture = ExtResource("5_bmxlf")
+
+[node name="Area2D" type="Area2D" parent="Deck" unique_id=1786259497]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D" unique_id=170838159]
+shape = SubResource("RectangleShape2D_237ro")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Deck" unique_id=1937763652]
+z_index = -3
+offset_left = -9.0
+offset_top = -25.0
+offset_right = 31.0
+offset_bottom = 15.0
+scale = Vector2(2, 2)
+text = "0"
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1570150001]
+script = ExtResource("6_4kpch")
